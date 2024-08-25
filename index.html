@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image slider</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            display: flex;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .background {
+            background: rgba(0, 0, 0, 0.5) url('https://media.istockphoto.com/id/1173544006/photo/winding-road.jpg?s=1024x1024&w=is&k=20&c=Lqsjw4-n5asC6S84gZ2baSOaQeXCYOssvZf4zgQY-SQ=');
+            background-size: cover;
+            background-blend-mode: darken;
+        }
+
+        .navbar ul {
+            display: flex;
+            align-items: center
+        }
+
+        .navbar ul li {
+            list-style: none;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            padding: 0px 10px;
+            margin: 2px 20px;
+            font-size: 1.5rem;
+            color: aliceblue;
+        }
+
+        .navbar img {
+            margin-top: 3px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 3px;
+            height: 50px;
+            width: 50px;
+            border-radius: 150px;
+        }
+
+        .center {
+            display: flex;
+            height: 70vh;
+        }
+
+        .firsthalf {
+            flex-direction: column;
+            width: 50%;
+            margin-top: 140px;
+            margin-left: 200px;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 10px;
+        }
+
+        .firsthalf h1 {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .firsthalf p {
+            font-size: 1.5rem;
+            color: aliceblue;
+            text-align: justify;
+        }
+
+        .center img {
+            height: 180px;
+            width: 180px;
+            margin-top: 120px;
+            margin-left: 30px;
+            border: 3px solid white;
+            border-radius: 150px;
+            border-style: double;
+        }
+
+        .media {
+            width: 100vw;
+        }
+
+        .video {
+            width: 100vw;
+        }
+
+        .video video {
+            height: 500px;
+            width: 800px;
+            padding: 30px;
+            margin: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .container {
+            padding: 1.5rem;
+        }
+
+        .slide-wrapper {
+            position: relative;
+            max-width: 90vw;
+            height: 70vh;
+            margin: 0px auto;
+        }
+
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            aspect-ratio: 16 / 9;
+            scroll-snap-type: xmandatory;
+            scroll-behavior: smooth;
+            box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+            border-radius: 0.5rem;
+        }
+
+        .slider img {
+            flex: 1 0 100%;
+            object-fit: cover;
+            scroll-snap-align: start;
+        }
+
+        .slider-nav {
+            display: flex;
+            column-gap: 1rem;
+            position: absolute;
+            bottom: -11rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .slider-nav a {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #fff;
+            opacity: 0.75;
+            transition: opacity ease 250ms;
+        }
+
+        .slider-nav a:hover {
+            opacity: 1;
+        }
+
+        @media only screen and (max-width:1150px) {
+            .background {
+                height: 100%;
+            }
+
+            .center {
+                margin-bottom: 23px;
+                height: 47vh;
+            }
+
+            .firsthalf {
+                margin-left: 120px;
+                margin-top: 100px;
+            }
+
+            .center img {
+                margin-top: 90px;
+                height: 100px;
+                width: 100px;
+            }
+
+            .firsthalf h1 {
+                font-size: 1.5rem;
+                color: white;
+            }
+
+            .firsthalf p {
+                font-size: 1rem;
+                color: aliceblue;
+                text-align: justify;
+            }
+
+            .firsthalf {
+                margin-left: 160px;
+            }
+
+            .navbar img {
+
+                height: 30px;
+                width: 30px;
+            }
+
+            .navbar ul li a {
+
+                font-size: 1rem;
+                padding: 0px 8px;
+                margin: 2px 10px;
+            }
+
+        }
+
+        @media only screen and (max-width:815px) {
+            .video video {
+                height: 220px;
+                width: 330px;
+                padding: 10px;
+                margin: auto;
+                display: block;
+                border-radius: 20px;
+            }
+
+            .firsthalf {
+                margin-left: 100px;
+                margin-top: 80px;
+            }
+
+            .center img {
+                margin-top: 80px;
+            }
+
+            .firsthalf h1 {
+                font-size: 1rem;
+                color: white;
+            }
+
+            .firsthalf p {
+                font-size: 0.6rem;
+                color: aliceblue;
+                text-align: justify;
+            }
+
+            .navbar ul li a {
+                font-size: 1rem;
+                padding: 0px;
+            }
+            .navbar img {
+            margin-top: 3px;
+            margin-left: 10px;
+            margin-right: 5px;
+            margin-bottom: 3px;
+            height: 30px;
+            width: 30px;
+            border-radius: 150px;
+            }
+            .center{
+                height:25vh;
+            }
+            .firsthalf {
+                margin-left: 45px;
+                margin-top:60px;
+            }
+            .center img {
+                margin-top: 60px;
+                height: 70px;
+                width: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <img src="https://static.vecteezy.com/system/resources/previews/032/242/170/non_2x/beautiful-waterfall-flowers-water-nature-waterfall-hd-wallpaper-ai-generated-free-photo.jpg"
+                alt="Error Loading">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#contactus">Contact</a></li>
+            <li><a href="AboutUs">About</a></li>
+            <li><a href="Services">Services</a></li>
+        </ul>
+    </div>
+    <section class="center background">
+        <div class="firsthalf">
+            <h1>
+                My name is Ahmad
+            </h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sint, culpa beatae suscipit quos, saepe in
+                aspernat. Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="secondhalf">
+            <img src="https://i.pinimg.com/564x/07/35/b0/0735b0549a646f7c66f1da1e2bae2285.jpg" alt="Error loading">
+        </div>
+    </section>
+
+    <section class="media">
+        <div class="video">
+            <video src="https://static.videezy.com/system/resources/previews/000/000/254/original/http-yahoo.mp4" controls></video>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="slide-wrapper">
+            <div class="slider">
+                <img id="slide1"
+                    src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+                    alt="Error loading">
+                <img id="slide2"
+                    src="https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1724457600&semt=ais_hybrid"
+                    alt="Error loading">
+                <img id="slide3"
+                    src="https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg"
+                    alt="Error loading">
+            </div>
+            <div class="slider-nav">
+                <a href="#slide1"></a>
+                <a href="#slide2"></a>
+                <a href="#slide3"></a>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
